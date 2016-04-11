@@ -1,0 +1,18 @@
+APP_NAME      := anaDilepton_em_sharedptr
+
+SOURCE_FILES  := analysis_em.cc
+USES_RFIO     := no
+USES_ORACLE   := yes
+USES_GFORTRAN := yes
+INSTALL_DIR   := /u/harabasz/apr12/dilepton_analysis/GE/loopDST_gen8_install
+
+include hades.def.mk
+
+HYDRA_LIBS    += -lDst -lPionTracker -lEventMixer
+
+
+.PHONY:  default
+default: clean build install
+
+include $(HADDIR)/hades.app.mk
+

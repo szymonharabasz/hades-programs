@@ -1,0 +1,18 @@
+APP_NAME      := anaDilepton_accStudy
+
+SOURCE_FILES  := analysis_accStudy.cc
+USES_RFIO     := no
+USES_ORACLE   := yes
+USES_GFORTRAN := yes
+INSTALL_DIR   := /u/harabasz/apr12/dilepton_analysis/GE/loopDST_gen7_install
+
+include hades.def.mk
+
+HYDRA_LIBS    += -lDst -lPionTracker
+
+
+.PHONY:  default
+default: clean build install
+
+include $(HADDIR)/hades.app.mk
+

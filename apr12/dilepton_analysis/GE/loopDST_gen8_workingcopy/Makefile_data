@@ -1,0 +1,23 @@
+APP_NAME      := anaDilepton
+
+DIELEANA_FILE := dieleAna_new_09_21.C
+HELPERFC_FILE := helperFunctions_multbin_09_19_intermediate.h
+
+SOURCE_FILES  := analysis.cc mygeantbooker.cc
+USES_RFIO     := no
+USES_ORACLE   := yes
+USES_GFORTRAN := yes
+INSTALL_DIR   := /u/harabasz/apr12/dilepton_analysis/GE/loopDST_gen8_install
+
+include hades.def.mk
+
+HYDRA_LIBS    += -lDst -lPionTracker
+
+CPP_FLAGS     += -D__DIELEANA_FILE__="\"${DIELEANA_FILE}\"" 
+CPP_FLAGS     += -D__HELPERFC_FILE__="\"${HELPERFC_FILE}\""
+
+.PHONY:  default
+default: clean build install install-src
+
+include $(HADDIR)/hades.app.mk
+include hades.src.mk
